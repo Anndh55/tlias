@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hello.mapper.ClazzMapper">
+
+    <resultMap id="ClazzResultMap" type="com.example.hello.entity.Clazz">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="room" property="room"/>
+        <result column="begin_date" property="beginDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="master_id" property="masterId"/>
+        <result column="subject" property="subject"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="master_name" property="masterName"/>
+    </resultMap>
+
+    <select id="list" resultMap="ClazzResultMap">
+        SELECT c.id, c.name, c.room, c.begin_date, c.end_date,
+               c.master_id, c.subject, c.create_time, c.update_time,
+               e.name AS master_name
+        FROM clazz c
+        LEFT JOIN emp e ON c.master_id = e.id
+        <where>
+            <if test="name != null and name != ''">
+                AND c.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="subject != null">
+                AND c.subject = #{subject}
+            </if>
+            <if test="begin != null">
+                AND c.begin_date &gt;= #{begin}
+            </if>
+            <if test="end != null">
+                AND c.end_date &lt;= #{end}
+            </if>
+        </where>
+        ORDER BY c.update_time DESC
+    </select>
+
+    <select id="findById" resultMap="ClazzResultMap">
+        SELECT c.id, c.name, c.room, c.begin_date, c.end_date,
+               c.master_id, c.subject, c.create_time, c.update_time,
+               e.name AS master_name
+        FROM clazz c
+        LEFT JOIN emp e ON c.master_id = e.id
+        WHERE c.id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.example.hello.entity.Clazz" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO clazz (name, room, begin_date, end_date, master_id, subject)
+        VALUES (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject})
+    </insert>
+
+    <update id="update" parameterType="com.example.hello.entity.Clazz">
+        UPDATE clazz
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="room != null">room = #{room},</if>
+            <if test="beginDate != null">begin_date = #{beginDate},</if>
+            <if test="endDate != null">end_date = #{endDate},</if>
+            <if test="masterId != null">master_id = #{masterId},</if>
+            <if test="subject != null">subject = #{subject},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM clazz WHERE id = #{id}
+    </delete>
+
+</mapper>
