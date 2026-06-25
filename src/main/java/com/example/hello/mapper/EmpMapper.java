@@ -14,6 +14,8 @@ public interface EmpMapper {
 
     List<Emp> findAll();
 
+    Emp findByUsername(String username);
+
     int insert(Emp emp);
 
     int update(Emp emp);

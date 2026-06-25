@@ -6,29 +6,29 @@
         <id column="id" property="id"/>
         <result column="emp_id" property="empId"/>
         <result column="company" property="company"/>
-        <result column="position" property="position"/>
-        <result column="start_date" property="startDate"/>
-        <result column="end_date" property="endDate"/>
+        <result column="job" property="position"/>
+        <result column="begin" property="startDate"/>
+        <result column="end" property="endDate"/>
     </resultMap>
 
     <select id="findByEmpId" resultMap="EmpExprResultMap">
-        SELECT id, emp_id, company, position, start_date, end_date
+        SELECT id, emp_id, company, job, begin, `end`
         FROM emp_expr
         WHERE emp_id = #{empId}
-        ORDER BY start_date ASC
+        ORDER BY begin ASC
     </select>
 
     <insert id="insert" parameterType="com.example.hello.entity.EmpExpr" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO emp_expr (emp_id, company, position, start_date, end_date)
+        INSERT INTO emp_expr (emp_id, company, job, begin, `end`)
         VALUES (#{empId}, #{company}, #{position}, #{startDate}, #{endDate})
     </insert>
 
     <update id="update" parameterType="com.example.hello.entity.EmpExpr">
         UPDATE emp_expr
         SET company = #{company},
-            position = #{position},
-            start_date = #{startDate},
-            end_date = #{endDate}
+            job = #{position},
+            begin = #{startDate},
+            end = #{endDate}
         WHERE id = #{id} AND emp_id = #{empId}
     </update>
 
