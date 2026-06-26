@@ -55,6 +55,7 @@
     <update id="update" parameterType="com.example.hello.entity.Clazz">
         UPDATE clazz
         <set>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
             <if test="name != null">name = #{name},</if>
             <if test="room != null">room = #{room},</if>
             <if test="beginDate != null">begin_date = #{beginDate},</if>

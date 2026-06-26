@@ -6,6 +6,7 @@ import com.example.hello.service.DeptService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
 @Service
 public class DeptServiceImpl implements DeptService {
@@ -33,6 +34,7 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public int update(Dept dept) {
+        dept.setUpdateTime(LocalDateTime.now());
         return deptMapper.update(dept);
     }
 

@@ -65,6 +65,7 @@
     <update id="update" parameterType="com.example.hello.entity.Student">
         UPDATE student
         <set>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
             <if test="name != null">name = #{name},</if>
             <if test="no != null">no = #{no},</if>
             <if test="gender != null">gender = #{gender},</if>

@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
 @Service
 public class ClazzServiceImpl implements ClazzService {
@@ -45,6 +46,7 @@ public class ClazzServiceImpl implements ClazzService {
 
     @Override
     public void update(Clazz clazz) {
+        clazz.setUpdateTime(LocalDateTime.now());
         clazzMapper.update(clazz);
     }
 

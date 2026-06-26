@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.time.LocalDateTime;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -50,6 +51,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void update(Student student) {
+        student.setUpdateTime(LocalDateTime.now());
         studentMapper.update(student);
     }
 

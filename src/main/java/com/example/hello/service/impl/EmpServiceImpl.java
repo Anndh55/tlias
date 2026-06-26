@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.time.LocalDateTime;
 
 @Service
 public class EmpServiceImpl implements EmpService {
@@ -65,6 +66,7 @@ public class EmpServiceImpl implements EmpService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void update(Emp emp) {
+        emp.setUpdateTime(LocalDateTime.now());
         empMapper.update(emp);
         updateExprList(emp.getId(), emp.getExprList());
     }
