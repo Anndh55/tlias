@@ -48,8 +48,8 @@
     </select>
 
     <insert id="insert" parameterType="com.example.hello.entity.Clazz" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO clazz (name, room, begin_date, end_date, master_id, subject)
-        VALUES (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject})
+        INSERT INTO clazz (name, room, begin_date, end_date, master_id, subject, create_time, update_time)
+        VALUES (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject}, #{createTime}, #{updateTime})
     </insert>
 
     <update id="update" parameterType="com.example.hello.entity.Clazz">

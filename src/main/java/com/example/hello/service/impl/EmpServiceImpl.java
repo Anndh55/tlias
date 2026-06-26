@@ -59,6 +59,8 @@ public class EmpServiceImpl implements EmpService {
         if (!StringUtils.hasText(emp.getPassword())) {
             emp.setPassword("123456");
         }
+        emp.setCreateTime(LocalDateTime.now());
+        emp.setUpdateTime(LocalDateTime.now());
         empMapper.insert(emp);
         saveExprList(emp.getId(), emp.getExprList());
     }

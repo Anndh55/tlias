@@ -18,7 +18,7 @@
     </select>
 
     <insert id="insert" parameterType="com.example.hello.entity.Dept">
-        INSERT INTO dept (name) VALUES (#{name})
+        INSERT INTO dept (name, create_time, update_time) VALUES (#{name}, #{createTime}, #{updateTime})
     </insert>
 
     <update id="update" parameterType="com.example.hello.entity.Dept">

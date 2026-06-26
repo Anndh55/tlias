@@ -65,8 +65,8 @@
     </select>
 
     <insert id="insert" parameterType="com.example.hello.entity.Emp" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO emp (username, password, name, gender, phone, salary, image, entry_date, dept_id)
-        VALUES (#{username}, #{password}, #{name}, #{gender}, #{phone}, #{salary}, #{image}, #{hireDate}, #{deptId})
+        INSERT INTO emp (username, password, name, gender, phone, salary, image, entry_date, dept_id, create_time, update_time)
+        VALUES (#{username}, #{password}, #{name}, #{gender}, #{phone}, #{salary}, #{image}, #{hireDate}, #{deptId}, #{createTime}, #{updateTime})
     </insert>
 
     <update id="update" parameterType="com.example.hello.entity.Emp">
