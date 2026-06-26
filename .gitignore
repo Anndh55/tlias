@@ -4,3 +4,4 @@ target/
 *.jar
 *.jar.original
 .claude/
+**/tlias-web/

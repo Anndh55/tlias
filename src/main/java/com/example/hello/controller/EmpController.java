@@ -25,6 +25,7 @@ public class EmpController {
     }
 
     @GetMapping("/list")
+
     public Result<List<Emp>> findAll() {
         return Result.success(empService.findAll());
     }
